@@ -36,8 +36,5 @@ export const ortographyCheckUseCase = async (
     temperature: 0.3,
   });
 
-  console.log(completion);
-  console.log(completion.choices[0].message);
-
   return JSON.parse(completion.choices[0].message.content);
 };
