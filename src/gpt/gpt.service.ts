@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import {
+  audioToTextUseCase,
   ortographyCheckUseCase,
   prosConsDicusserStreamUseCase,
   prosConsDicusserUseCase,
@@ -7,6 +8,7 @@ import {
   translateUseCase,
 } from './use-cases';
 import {
+  AudioToTextDto,
   OrtographyDto,
   ProsConsDiscusserDto,
   TextToAudioDto,
@@ -58,5 +60,15 @@ export class GptService {
     }
 
     return filePath;
+  }
+
+  async audioToText(
+    audioFile: Express.Multer.File,
+    audioToTextDto: AudioToTextDto,
+  ) {
+    console.log("entra");
+    
+    const { prompt } = audioToTextDto;
+    return await audioToTextUseCase(this.openIA, { audioFile, prompt });
   }
 }
