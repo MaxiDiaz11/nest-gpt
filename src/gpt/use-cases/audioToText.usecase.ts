@@ -8,8 +8,6 @@ interface Options {
 export const audioToTextUseCase = async (openAI: OpenAI, options: Options) => {
   const { prompt, audioFile } = options;
 
-  console.log({ prompt, audioFile });
-
   const response = await openAI.audio.transcriptions.create({
     file: fs.createReadStream(audioFile.path),
     model: 'whisper-1',
@@ -17,8 +15,6 @@ export const audioToTextUseCase = async (openAI: OpenAI, options: Options) => {
     prompt: prompt, //mismo idioma que el audio
     response_format: 'verbose_json',
   });
-
-  console.log(response);
 
   return response;
 };

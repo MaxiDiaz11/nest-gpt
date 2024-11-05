@@ -4,3 +4,5 @@ export * from './prosConsDicusserStream.usecase';
 export * from './translate.usecase';
 export * from './textToAudio.usecase';
 export * from './audioToText.usecase';
+export * from './imageGeneration.usecase';
+export * from './imageVariation.usecase';
